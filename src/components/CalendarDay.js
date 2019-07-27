@@ -34,7 +34,9 @@ class CalendarDay extends Component {
 
   render() {
     const dayReminders = this.props.reminders.filter(
-      reminder => reminder.day === this.props.day.date()
+      reminder =>
+        reminder.day === this.props.day.date() &&
+        reminder.month === this.props.day.month()
     );
     dayReminders.sort(
       (a, b) =>
