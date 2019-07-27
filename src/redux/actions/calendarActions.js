@@ -5,7 +5,7 @@ export const addReminder = (day, reminderData) => dispatch => {
     reminderData.weatherForecast = res.value;
     dispatch({
       type: "SET_REMINDER",
-      payload: { day: day.date(), ...reminderData }
+      payload: { day: day.date(), month: day.month(), ...reminderData }
     });
   });
 };
