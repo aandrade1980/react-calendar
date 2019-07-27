@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function calendarHeader({ month }) {
+export default function CalendarTitle({ month }) {
   const styles = {
     h1: {
       display: "flex",
