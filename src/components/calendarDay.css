@@ -1,0 +1,12 @@
+.calendar_day {
+  border: solid 1px #d0d0d0;
+}
+
+.weekend_day {
+  color: rgb(37, 115, 195);
+  background-color: #e0e0e0;
+}
+
+.disabled_day {
+  color: #676565;
+}

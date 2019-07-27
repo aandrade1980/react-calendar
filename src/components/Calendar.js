@@ -4,14 +4,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 // Components
-import CalendarHeader from "./CalendarHeader";
+import CalendarTitle from "./CalendarTitle";
+import CalendarDays from "./CalendarDays";
+import CalendarMonth from "./CalendarMonth";
+
+import moment from "moment";
 
 class Calendar extends Component {
   render() {
+    const weekDays = moment.weekdays();
+    const { name, weeks } = this.props.currentMonth;
     return (
-      <>
-        <CalendarHeader month={this.props.currentMonth.name} />
-      </>
+      <div>
+        <CalendarTitle month={name} />
+        <CalendarDays weekDays={weekDays} />
+        <CalendarMonth weeks={weeks} />
+      </div>
     );
   }
 }
