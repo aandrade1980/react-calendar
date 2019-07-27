@@ -10,3 +10,7 @@
 .disabled_day {
   color: #676565;
 }
+
+.d-none {
+  display: none;
+}

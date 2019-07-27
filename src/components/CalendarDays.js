@@ -1,5 +1,4 @@
 import React from "react";
-import { white } from "ansi-colors";
 
 export default function CalendarDays({ weekDays }) {
   const styles = {
