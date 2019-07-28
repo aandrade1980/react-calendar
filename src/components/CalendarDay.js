@@ -12,8 +12,7 @@ import Reminder from "./Reminder";
 
 class CalendarDay extends Component {
   state = {
-    openModal: false,
-    currentReminder: ""
+    openModal: false
   };
 
   dayIsWeekend = day =>
@@ -22,19 +21,13 @@ class CalendarDay extends Component {
   dayInCurrentMonth = day =>
     day.month() !== moment().month() ? "disabled_day" : "";
 
-  openModal = currentReminder =>
-    this.setState({
-      openModal: true,
-      currentReminder
-    });
+  openModal = () => this.setState({ openModal: true });
 
   closeModal = () => this.setState({ openModal: false });
 
-  currentReminder = currentReminder => this.openModal(currentReminder);
-
   render() {
-    const { day, reminders } = this.props;
-    const dayReminders = reminders.filter(
+    const { day, allReminders } = this.props;
+    const dayReminders = allReminders.filter(
       element => element.day === day.date() && element.month === day.month()
     );
     dayReminders.sort(
@@ -58,22 +51,15 @@ class CalendarDay extends Component {
           >
             <i className="fas fa-plus-circle" />
           </button>
-          {this.props.reminders.map((el, index) => {
-            return (
-              <Reminder
-                key={index}
-                reminder={el}
-                currentReminder={this.currentReminder}
-              />
-            );
-          })}
+          {dayReminders.map(el => (
+            <Reminder key={el.id} reminder={el} day={day} />
+          ))}
         </div>
         {this.state.openModal && (
           <Modal
             open={this.state.openModal}
             closeModal={this.closeModal}
             day={day}
-            reminder={this.state.currentReminder}
           />
         )}
       </>
@@ -82,7 +68,7 @@ class CalendarDay extends Component {
 }
 
 const mapStateToProps = state => ({
-  reminders: state.calendar.currentMonth.reminders
+  allReminders: state.calendar.currentMonth.reminders
 });
 
 export default connect(

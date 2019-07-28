@@ -48,6 +48,8 @@ input[type="color"] {
 .reminder_form .far,
 .reminder_form .fas {
   padding-left: 15px;
+  position: initial;
+  color: black;
 }
 
 .reminder_from_buttons_container {

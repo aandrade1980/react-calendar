@@ -3,6 +3,7 @@ import { getWeatherByCityAndDate } from "../../util/util";
 export const addReminder = (day, reminderData) => dispatch => {
   getWeatherByCityAndDate(reminderData.city, day).then(res => {
     reminderData.weatherForecast = res.value;
+    reminderData.id = `_${new Date().getTime()}`;
     dispatch(
       createReminderAction({
         day: day.date(),
@@ -10,6 +11,19 @@ export const addReminder = (day, reminderData) => dispatch => {
         ...reminderData
       })
     );
+  });
+};
+
+export const updateReminder = (day, reminderData) => dispatch => {
+  const updatedReminder = {
+    day: day.date(),
+    month: day.month(),
+    ...reminderData
+  };
+
+  dispatch({
+    type: "UPDATE_REMINDER",
+    payload: updatedReminder
   });
 };
 
