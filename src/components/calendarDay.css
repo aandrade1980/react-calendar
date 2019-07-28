@@ -6,7 +6,7 @@
   overflow: scroll;
 }
 
-.calendar_day_container:hover .btn_new_reminder {
+.calendar_day_container:hover .btn_caledar {
   opacity: 1;
 }
 
@@ -17,7 +17,22 @@
   top: 2px;
 }
 
+.calendar_day_container .btn_delete_reminders .far {
+  font-size: 18px;
+  position: absolute;
+  right: 35px;
+  top: 2px;
+}
+
 .btn_new_reminder {
+  color: #28a745;
+}
+
+.btn_delete_reminders {
+  color: #dc3545;
+}
+
+.btn_caledar {
   background: none;
   border: 0;
   outline: 0;
