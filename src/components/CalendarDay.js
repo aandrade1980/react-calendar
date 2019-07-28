@@ -33,16 +33,15 @@ class CalendarDay extends Component {
   currentReminder = currentReminder => this.openModal(currentReminder);
 
   render() {
-    const dayReminders = this.props.reminders.filter(
-      reminder =>
-        reminder.day === this.props.day.date() &&
-        reminder.month === this.props.day.month()
+    const { day, reminders } = this.props;
+    const dayReminders = reminders.filter(
+      reminder => reminder.day === day.date() && reminder.month === day.month()
     );
     dayReminders.sort(
       (a, b) =>
         new Date("1970/01/01 " + a.time) - new Date("1970/01/01 " + b.time)
     );
-    const { day } = this.props;
+
     return (
       <>
         <div
