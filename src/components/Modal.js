@@ -38,47 +38,47 @@ class Modal extends Component {
       open && (
         <div className="modal_container">
           <div className="modal_content">
-            <form style={{ minWidth: "450px", minHeight: "200px" }}>
-              <div>
-                <textarea
-                  className="description"
-                  placeholder="Reminder"
-                  maxLength="30"
-                  name="description"
-                  value={this.state.description}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <input
-                  type="time"
-                  id="time"
-                  name="time"
-                  value={this.state.time}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  value={this.state.city}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <input
-                  type="color"
-                  id="color"
-                  name="color"
-                  value={this.state.color}
-                  onChange={this.handleChange}
-                />
-              </div>
+            <form className="reminder_form">
+              <i className="far fa-bell" />
+              <textarea
+                placeholder="Reminder..."
+                maxLength="30"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+              />
+              <i className="far fa-clock" />
+              <input
+                type="time"
+                id="time"
+                name="time"
+                value={this.state.time}
+                onChange={this.handleChange}
+              />
+              <i className="fas fa-city" />
+              <input
+                placeholder="City..."
+                type="text"
+                id="city"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleChange}
+              />
+              <i className="fas fa-palette" />
+              <input
+                type="color"
+                id="color"
+                name="color"
+                value={this.state.color}
+                onChange={this.handleChange}
+              />
             </form>
-            <button onClick={closeModal}>Cancel</button>
-            <button onClick={this.handleSubmit}>Save</button>
+            <div className="reminder_from_buttons_container">
+              <button onClick={closeModal}>Cancel</button>
+              <button className="btn_save" onClick={this.handleSubmit}>
+                Save
+              </button>
+            </div>
           </div>
         </div>
       )

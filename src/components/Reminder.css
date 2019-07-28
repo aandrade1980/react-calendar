@@ -1,0 +1,39 @@
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 2px 0;
+}
+
+.reminder_container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  position: relative;
+  margin-top: 3px;
+}
+
+.reminder_container button {
+  border: 0;
+  background: none;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+
+.reminder_container .far {
+  font-size: 16px;
+}
+
+.reminder_container span {
+  font-size: 13px;
+  font-weight: 300;
+}

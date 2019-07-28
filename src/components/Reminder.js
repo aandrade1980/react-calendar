@@ -1,19 +1,20 @@
 import React from "react";
 
+import "./Reminder.css";
+
 const Reminder = ({
   currentReminder,
   reminder: { city, color, description, time, id, weatherForecast }
 }) => {
   return (
-    <div style={{ backgroundColor: `${color}`, color: "white" }}>
-      <p>
-        {description} - {weatherForecast}
-      </p>
+    <div className="reminder_container" style={{ backgroundColor: `${color}` }}>
+      <p className="description ellipsis">{description}</p>
       <span>{`${city} - ${time}`}</span>
+      <span>{weatherForecast}</span>
       <button
         onClick={() => currentReminder({ description, city, color, time, id })}
       >
-        Edit
+        <i className="far fa-edit" />
       </button>
     </div>
   );
