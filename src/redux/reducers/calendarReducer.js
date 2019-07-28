@@ -4,17 +4,22 @@ const initialState = getCurrentMonth();
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case "UPDATE_REMINDER":
+      return {
+        ...state,
+        currentMonth: {
+          ...state.currentMonth,
+          reminders: state.currentMonth.reminders.map(reminder => {
+            if (reminder.id !== action.payload.id) {
+              return reminder;
+            }
+            return {
+              ...action.payload
+            };
+          })
+        }
+      };
     case "SET_REMINDER":
-      const index = state.currentMonth.reminders.findIndex(
-        reminder => reminder.id === action.payload.id
-      );
-      if (index !== -1) {
-        state.currentMonth.reminders[index] = action.payload;
-        return {
-          ...state
-        };
-      }
-
       return {
         ...state,
         currentMonth: {

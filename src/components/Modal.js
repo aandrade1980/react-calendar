@@ -4,15 +4,18 @@ import "./Modal.css";
 
 // Redux
 import { connect } from "react-redux";
-import { addReminder } from "../redux/actions/calendarActions";
+import { addReminder, updateReminder } from "../redux/actions/calendarActions";
 
 class Modal extends Component {
   state = {
-    description: this.props.reminder.description || "",
-    time: this.props.reminder.time || "",
-    city: this.props.reminder.city || "",
-    color: this.props.reminder.color || "#e66465",
-    id: this.props.reminder.id || ""
+    description: this.props.reminder ? this.props.reminder.description : "",
+    time: this.props.reminder ? this.props.reminder.time : "",
+    city: this.props.reminder ? this.props.reminder.city : "",
+    color: this.props.reminder ? this.props.reminder.color : "#e66465",
+    id: this.props.reminder ? this.props.reminder.id : "",
+    weatherForecast: this.props.reminder
+      ? this.props.reminder.weatherForecast
+      : ""
   };
 
   handleChange = event =>
@@ -21,15 +24,11 @@ class Modal extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     if (this.state.id === "") {
-      this.setState({ id: `_${new Date().getTime()}` }, () =>
-        this.props.addReminder(this.props.day, this.state)
-      );
-    } else {
       this.props.addReminder(this.props.day, this.state);
+    } else {
+      this.props.updateReminder(this.props.day, this.state);
     }
-    setTimeout(() => {
-      this.props.closeModal();
-    }, 0);
+    this.props.closeModal();
   };
 
   render() {
@@ -86,7 +85,12 @@ class Modal extends Component {
   }
 }
 
+const mapActionsToProps = {
+  addReminder,
+  updateReminder
+};
+
 export default connect(
   null,
-  { addReminder }
+  mapActionsToProps
 )(Modal);
