@@ -2,6 +2,10 @@ import React, { Component } from "react";
 
 import "./Reminder.css";
 
+// Redux
+import { connect } from "react-redux";
+import { deleteReminder } from "../redux/actions/calendarActions";
+
 // Component
 import Modal from "./Modal";
 
@@ -15,7 +19,7 @@ class Reminder extends Component {
   closeModal = () => this.setState({ openModal: false });
 
   render() {
-    const { day, reminder } = this.props;
+    const { day, reminder, deleteReminder } = this.props;
     return (
       <>
         <div
@@ -25,8 +29,14 @@ class Reminder extends Component {
           <p className="description ellipsis">{reminder.description}</p>
           <span>{`${reminder.city} - ${reminder.time}`}</span>
           <span>{reminder.weatherForecast}</span>
-          <button onClick={this.openModal}>
+          <button className="btn_edit_reminder" onClick={this.openModal}>
             <i className="far fa-edit" />
+          </button>
+          <button
+            className="btn_delete_reminder"
+            onClick={() => deleteReminder(reminder.id)}
+          >
+            <i className="far fa-trash-alt" />
           </button>
         </div>
         {this.state.openModal && (
@@ -42,4 +52,7 @@ class Reminder extends Component {
   }
 }
 
-export default Reminder;
+export default connect(
+  null,
+  { deleteReminder }
+)(Reminder);

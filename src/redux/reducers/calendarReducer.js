@@ -27,6 +27,26 @@ export default function(state = initialState, action) {
           reminders: [...state.currentMonth.reminders, action.payload]
         }
       };
+    case "DELETE_REMINDERS":
+      return {
+        ...state,
+        currentMonth: {
+          ...state.currentMonth,
+          reminders: state.currentMonth.reminders.filter(
+            reminder => reminder.day !== action.payload
+          )
+        }
+      };
+    case "DELETE_REMINDER":
+      return {
+        ...state,
+        currentMonth: {
+          ...state.currentMonth,
+          reminders: state.currentMonth.reminders.filter(
+            reminder => reminder.id !== action.payload
+          )
+        }
+      };
     default:
       return state;
   }

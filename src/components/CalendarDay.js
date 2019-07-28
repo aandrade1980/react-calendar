@@ -5,6 +5,7 @@ import "./calendarDay.css";
 
 // Redux
 import { connect } from "react-redux";
+import { deleteAllReminders } from "../redux/actions/calendarActions";
 
 // Components
 import Modal from "./Modal";
@@ -26,7 +27,7 @@ class CalendarDay extends Component {
   closeModal = () => this.setState({ openModal: false });
 
   render() {
-    const { day, allReminders } = this.props;
+    const { day, allReminders, deleteAllReminders } = this.props;
     const dayReminders = allReminders.filter(
       element => element.day === day.date() && element.month === day.month()
     );
@@ -34,6 +35,7 @@ class CalendarDay extends Component {
       (a, b) =>
         new Date("1970/01/01 " + a.time) - new Date("1970/01/01 " + b.time)
     );
+    const showButton = this.dayInCurrentMonth(day) !== "" ? " d-none" : "";
 
     return (
       <>
@@ -44,12 +46,16 @@ class CalendarDay extends Component {
         >
           <span className="calendar_day">{day.date()}</span>
           <button
-            className={`btn_new_reminder${
-              this.dayInCurrentMonth(day) !== "" ? " d-none" : ""
-            }`}
+            className={`btn_caledar btn_new_reminder${showButton}`}
             onClick={this.openModal}
           >
             <i className="fas fa-plus-circle" />
+          </button>
+          <button
+            className={`btn_caledar btn_delete_reminders${showButton}`}
+            onClick={() => deleteAllReminders(day)}
+          >
+            <i className="far fa-trash-alt" />
           </button>
           {dayReminders.map(el => (
             <Reminder key={el.id} reminder={el} day={day} />
@@ -73,5 +79,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { deleteAllReminders }
 )(CalendarDay);

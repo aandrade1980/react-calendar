@@ -33,3 +33,17 @@ export const createReminderAction = reminder => {
     payload: reminder
   };
 };
+
+export const deleteAllReminders = day => dispatch => {
+  return dispatch({
+    type: "DELETE_REMINDERS",
+    payload: day.date()
+  });
+};
+
+export const deleteReminder = reminderId => dispatch => {
+  return dispatch({
+    type: "DELETE_REMINDER",
+    payload: reminderId
+  });
+};
