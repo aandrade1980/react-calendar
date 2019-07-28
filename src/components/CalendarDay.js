@@ -35,7 +35,7 @@ class CalendarDay extends Component {
   render() {
     const { day, reminders } = this.props;
     const dayReminders = reminders.filter(
-      reminder => reminder.day === day.date() && reminder.month === day.month()
+      element => element.day === day.date() && element.month === day.month()
     );
     dayReminders.sort(
       (a, b) =>
@@ -45,26 +45,24 @@ class CalendarDay extends Component {
     return (
       <>
         <div
-          className={`calendar_day ${this.dayIsWeekend(
+          className={`calendar_day_container ${this.dayIsWeekend(
             day
           )} ${this.dayInCurrentMonth(day)}`}
         >
-          {day.date()}
+          <span className="calendar_day">{day.date()}</span>
           <button
-            className={
-              "btn_new_reminder" && this.dayInCurrentMonth(day) !== ""
-                ? " d-none"
-                : ""
-            }
+            className={`btn_new_reminder${
+              this.dayInCurrentMonth(day) !== "" ? " d-none" : ""
+            }`}
             onClick={this.openModal}
           >
-            +
+            <i className="fas fa-plus-circle" />
           </button>
-          {dayReminders.map((reminder, index) => {
+          {this.props.reminders.map((el, index) => {
             return (
               <Reminder
                 key={index}
-                reminder={reminder}
+                reminder={el}
                 currentReminder={this.currentReminder}
               />
             );

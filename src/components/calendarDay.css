@@ -1,14 +1,43 @@
+.calendar_day_container {
+  position: relative;
+  border: solid 0.5px #a0a0a0;
+  font-weight: bold;
+  height: 150px;
+  overflow: scroll;
+}
+
+.calendar_day_container:hover .btn_new_reminder {
+  opacity: 1;
+}
+
+.calendar_day_container .fas {
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+}
+
+.btn_new_reminder {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1;
+}
+
 .calendar_day {
-  border: solid 1px #d0d0d0;
+  padding: 0 15px;
 }
 
 .weekend_day {
   color: rgb(37, 115, 195);
-  background-color: #e0e0e0;
+  background-color: #efefef;
 }
 
 .disabled_day {
-  color: #676565;
+  color: #a0a0a0;
 }
 
 .d-none {

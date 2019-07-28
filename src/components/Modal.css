@@ -8,10 +8,75 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .modal_content {
   background: #fff;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.reminder_form {
+  min-width: 450px;
+  min-height: 400px;
+  display: grid;
+  grid-template-columns: 50px auto;
+  align-items: center;
+}
+
+textarea {
+  width: 300px;
+  height: 50px;
+  font-size: 14px;
+}
+
+input {
+  width: 150px;
+  height: 25px;
+  font-size: 14px;
+}
+
+input[type="text"] {
+  width: 300px;
+}
+
+input[type="color"] {
+  width: 50px;
+}
+
+.reminder_form .far,
+.reminder_form .fas {
+  padding-left: 15px;
+}
+
+.reminder_from_buttons_container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 15px 15px;
+}
+
+.modal_container button {
+  height: 30px;
+  border: 0;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0 20px;
+  border-radius: 4px;
+  margin: 0 3px;
+  transition: background 0.3s;
+}
+
+.modal_container button:hover {
+  background-color: #d3d6da;
+}
+
+.modal_container .btn_save {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.modal_container .btn_save:hover {
+  background: #4b8bde;
 }
