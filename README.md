@@ -16,10 +16,6 @@ to start the local server:
  http://localhost:3000/
 ```
 
-Here's what my final UI looked like:
-
-https://github.com/aandrade1980/react-calendar/blob/dev/screenshot.png
-
 If there was more time I would have liked to:
 
 - Think out the Redux architecture a little more
