@@ -8,6 +8,7 @@ export const addReminder = (day, reminderData) => dispatch => {
       createReminderAction({
         day: day.date(),
         month: day.month(),
+        year: day.year(),
         ...reminderData
       })
     );
@@ -45,5 +46,17 @@ export const deleteReminder = reminderId => dispatch => {
   return dispatch({
     type: "DELETE_REMINDER",
     payload: reminderId
+  });
+};
+
+export const getNextMonth = () => dispatch => {
+  return dispatch({
+    type: "GET_NEXT_MONTH"
+  });
+};
+
+export const getPrevMonth = () => dispatch => {
+  return dispatch({
+    type: "GET_PREV_MONTH"
   });
 };

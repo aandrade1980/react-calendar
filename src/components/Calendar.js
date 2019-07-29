@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 // Redux
 import { connect } from "react-redux";
@@ -8,15 +9,13 @@ import CalendarTitle from "./CalendarTitle";
 import CalendarDays from "./CalendarDays";
 import CalendarMonth from "./CalendarMonth";
 
-import moment from "moment";
-
 class Calendar extends Component {
   render() {
     const weekDays = moment.weekdays();
     const { name, weeks } = this.props.currentMonth;
     return (
       <div>
-        <CalendarTitle month={name} />
+        <CalendarTitle monthName={name} />
         <CalendarDays weekDays={weekDays} />
         <CalendarMonth weeks={weeks} />
       </div>

@@ -15,7 +15,9 @@
   flex-direction: column;
   color: white;
   position: relative;
-  margin-top: 3px;
+  margin: 3px;
+  border-radius: 3px;
+  padding: 3px;
 }
 
 .reminder_container button {

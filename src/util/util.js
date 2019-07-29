@@ -22,6 +22,78 @@ export function getCurrentMonth() {
     .endOf("month")
     .week();
 
+  const calendar = getCalendar(startWeek, endWeek);
+
+  return {
+    currentMonth: {
+      date: curMonth,
+      monthIndex: moment().month(),
+      name: moment(curMonth).format("MMMM YYYY"),
+      weeks: calendar
+    },
+    reminders: []
+  };
+}
+
+export function getNextMont(nextMonthIndex) {
+  const add = nextMonthIndex - moment().month();
+  const startWeek = moment()
+    .startOf("month")
+    .add(add, "month")
+    .week();
+  const endWeek = moment()
+    .endOf("month")
+    .add(add, "month")
+    .week();
+
+  const calendar = getCalendar(startWeek, endWeek);
+
+  return {
+    currentMonth: {
+      date: moment()
+        .add(add, "month")
+        .format("YYYY-MM"),
+      monthIndex: moment()
+        .add(add, "month")
+        .month(),
+      name: moment()
+        .add(add, "month")
+        .format("MMMM YYYY"),
+      weeks: calendar
+    }
+  };
+}
+
+export function getPrevMont(prevMonthIndex) {
+  const subtract = moment().month() - prevMonthIndex;
+  const startWeek = moment()
+    .startOf("month")
+    .subtract(subtract, "month")
+    .week();
+  const endWeek = moment()
+    .endOf("month")
+    .subtract(subtract, "month")
+    .week();
+
+  const calendar = getCalendar(startWeek, endWeek);
+
+  return {
+    currentMonth: {
+      date: moment()
+        .subtract(subtract, "month")
+        .format("YYYY-MM"),
+      monthIndex: moment()
+        .subtract(subtract, "month")
+        .month(),
+      name: moment()
+        .subtract(subtract, "month")
+        .format("MMMM YYYY"),
+      weeks: calendar
+    }
+  };
+}
+
+function getCalendar(startWeek, endWeek) {
   let calendar = [];
   for (let week = startWeek; week <= endWeek; week++) {
     calendar.push({
@@ -37,13 +109,5 @@ export function getCurrentMonth() {
         )
     });
   }
-
-  return {
-    currentMonth: {
-      date: curMonth,
-      name: moment(curMonth).format("MMMM YYYY"),
-      weeks: calendar,
-      reminders: []
-    }
-  };
+  return calendar;
 }
