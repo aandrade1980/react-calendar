@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 
 // Redux
@@ -6,7 +7,7 @@ import { connect } from "react-redux";
 
 // Components
 import CalendarTitle from "./CalendarTitle";
-import CalendarDays from "./CalendarDays";
+import CalendarNameDays from "./CalendarNameDays";
 import CalendarMonth from "./CalendarMonth";
 
 class Calendar extends Component {
@@ -16,7 +17,7 @@ class Calendar extends Component {
     return (
       <div>
         <CalendarTitle monthName={name} />
-        <CalendarDays weekDays={weekDays} />
+        <CalendarNameDays weekDays={weekDays} />
         <CalendarMonth weeks={weeks} />
       </div>
     );
@@ -26,6 +27,11 @@ class Calendar extends Component {
 const mapStateToProps = state => ({
   currentMonth: state.calendar.currentMonth
 });
+
+Calendar.propTypes = {
+  weeks: PropTypes.array,
+  name: PropTypes.string
+};
 
 export default connect(
   mapStateToProps,

@@ -9,7 +9,15 @@ export function getWeatherByCityAndDate(city, day) {
 
   return fetch(url)
     .then(res => res.json())
-    .then(jsonRes => jsonRes.data.weather[0].hourly[0].weatherDesc[0]);
+    .then(jsonRes => {
+      // Weahter api supports only next 15 day...
+      // If there isn't a weather property then the date is to far in the future
+      if (jsonRes.data.weather) {
+        return jsonRes.data.weather[0].hourly[0].weatherDesc[0];
+      }
+      // If date is more than 15 days show current conditions...
+      return jsonRes.data.current_condition[0].weatherDesc[0];
+    });
 }
 
 export function getCurrentMonth() {

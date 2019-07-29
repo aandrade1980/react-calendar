@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import "./Modal.css";
 
@@ -37,7 +38,7 @@ class Modal extends Component {
       open && (
         <div className="modal_container">
           <div className="modal_content">
-            <form className="reminder_form">
+            <form className="reminder_form" onSubmit={this.handleSubmit}>
               <i className="far fa-bell" />
               <textarea
                 placeholder="Reminder..."
@@ -45,6 +46,7 @@ class Modal extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
+                required
               />
               <i className="far fa-clock" />
               <input
@@ -62,6 +64,7 @@ class Modal extends Component {
                 name="city"
                 value={this.state.city}
                 onChange={this.handleChange}
+                required
               />
               <i className="fas fa-palette" />
               <input
@@ -71,13 +74,16 @@ class Modal extends Component {
                 value={this.state.color}
                 onChange={this.handleChange}
               />
+              <div />
+              <div className="reminder_from_buttons_container">
+                <button type="button" onClick={closeModal}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn_save">
+                  Save
+                </button>
+              </div>
             </form>
-            <div className="reminder_from_buttons_container">
-              <button onClick={closeModal}>Cancel</button>
-              <button className="btn_save" onClick={this.handleSubmit}>
-                Save
-              </button>
-            </div>
           </div>
         </div>
       )
@@ -88,6 +94,13 @@ class Modal extends Component {
 const mapActionsToProps = {
   addReminder,
   updateReminder
+};
+
+Modal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  addReminder: PropTypes.func.isRequired,
+  updateReminder: PropTypes.func.isRequired
 };
 
 export default connect(

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // Redux
 import { connect } from "react-redux";
@@ -31,6 +32,12 @@ class CalendarTitle extends Component {
 const mapActionsToProps = {
   getNextMonth,
   getPrevMonth
+};
+
+CalendarTitle.propTypes = {
+  monthName: PropTypes.string.isRequired,
+  getNextMonth: PropTypes.func.isRequired,
+  getPrevMonth: PropTypes.func.isRequired
 };
 
 export default connect(
