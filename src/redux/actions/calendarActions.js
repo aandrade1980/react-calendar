@@ -1,18 +1,20 @@
 import { getWeatherByCityAndDate } from "../../util/util";
 
 export const addReminder = (day, reminderData) => dispatch => {
-  getWeatherByCityAndDate(reminderData.city, day).then(res => {
-    reminderData.weatherForecast = res.value;
-    reminderData.id = `_${new Date().getTime()}`;
-    dispatch(
-      createReminderAction({
-        day: day.date(),
-        month: day.month(),
-        year: day.year(),
-        ...reminderData
-      })
-    );
-  });
+  getWeatherByCityAndDate(reminderData.city, day)
+    .then(res => {
+      reminderData.weatherForecast = res.value;
+      reminderData.id = `_${new Date().getTime()}`;
+      dispatch(
+        createReminderAction({
+          day: day.date(),
+          month: day.month(),
+          year: day.year(),
+          ...reminderData
+        })
+      );
+    })
+    .catch(err => console.error("addReminder action error => ", err));
 };
 
 export const updateReminder = (day, reminderData) => dispatch => {

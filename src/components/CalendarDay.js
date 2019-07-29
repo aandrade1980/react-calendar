@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import "./CalendarDay.css";
 
@@ -76,6 +77,13 @@ const mapStateToProps = state => ({
   allReminders: state.calendar.reminders,
   monthIndex: state.calendar.currentMonth.monthIndex
 });
+
+CalendarDay.propTypes = {
+  monthIndex: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  allReminders: PropTypes.array,
+  deleteAllReminders: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

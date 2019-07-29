@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import "./Reminder.css";
 
@@ -20,6 +21,7 @@ class Reminder extends Component {
 
   render() {
     const { day, reminder, deleteReminder } = this.props;
+    const { openModal } = this.state;
     return (
       <>
         <div
@@ -39,9 +41,9 @@ class Reminder extends Component {
             <i className="far fa-trash-alt" />
           </button>
         </div>
-        {this.state.openModal && (
+        {openModal && (
           <Modal
-            open={this.state.openModal}
+            open={openModal}
             closeModal={this.closeModal}
             day={day}
             reminder={reminder}
@@ -51,6 +53,12 @@ class Reminder extends Component {
     );
   }
 }
+
+Reminder.propTypes = {
+  day: PropTypes.object.isRequired,
+  reminder: PropTypes.object.isRequired,
+  deleteReminder: PropTypes.func.isRequired
+};
 
 export default connect(
   null,

@@ -55,7 +55,7 @@ input[type="color"] {
 .reminder_from_buttons_container {
   display: flex;
   justify-content: flex-end;
-  margin: 0 15px 15px;
+  margin: 0 15px;
 }
 
 .modal_container button {
@@ -67,7 +67,7 @@ input[type="color"] {
   padding: 0 20px;
   border-radius: 4px;
   margin: 0 3px;
-  transition: background 0.3s;
+  transition: background 0.5s;
 }
 
 .modal_container button:hover {

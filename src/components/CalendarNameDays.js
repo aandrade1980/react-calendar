@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function CalendarDays({ weekDays }) {
+function CalendarNameDays({ weekDays }) {
   const styles = {
     header: {
       display: "flex",
@@ -25,3 +26,9 @@ export default function CalendarDays({ weekDays }) {
     </header>
   );
 }
+
+CalendarNameDays.propTyes = {
+  weekDays: PropTypes.array.isRequired
+};
+
+export default CalendarNameDays;

@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Components
 import Week from "./CalendarWeek";
 
-export default function CalendarMonth({ weeks }) {
+function CalendarMonth({ weeks }) {
   return (
     <>
       {weeks.map((week, index) => {
@@ -12,3 +13,9 @@ export default function CalendarMonth({ weeks }) {
     </>
   );
 }
+
+CalendarMonth.propTypes = {
+  weeks: PropTypes.array.isRequired
+};
+
+export default CalendarMonth;
