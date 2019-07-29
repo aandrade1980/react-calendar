@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./calendarWeek.css";
+import "./CalendarWeek.css";
 
 // Components
 import Day from "./CalendarDay";

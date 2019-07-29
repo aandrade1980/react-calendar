@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import moment from "moment";
 
-import "./calendarDay.css";
+import "./CalendarDay.css";
 
 // Redux
 import { connect } from "react-redux";
@@ -20,7 +19,7 @@ class CalendarDay extends Component {
     day.day() === 0 || day.day() === 6 ? "weekend_day" : "";
 
   dayInCurrentMonth = day =>
-    day.month() !== moment().month() ? "disabled_day" : "";
+    day.month() !== this.props.monthIndex ? "disabled_day" : "";
 
   openModal = () => this.setState({ openModal: true });
 
@@ -74,7 +73,8 @@ class CalendarDay extends Component {
 }
 
 const mapStateToProps = state => ({
-  allReminders: state.calendar.currentMonth.reminders
+  allReminders: state.calendar.reminders,
+  monthIndex: state.calendar.currentMonth.monthIndex
 });
 
 export default connect(
