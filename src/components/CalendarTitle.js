@@ -12,17 +12,24 @@ class CalendarTitle extends Component {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center"
+      },
+      button: {
+        cursor: "pointer"
       }
     };
     const { monthName, getNextMonth, getPrevMonth } = this.props;
     return (
       <header style={styles.header}>
         <div>
-          <button onClick={() => getPrevMonth()}>◀</button>
+          <button style={styles.button} onClick={() => getPrevMonth()}>
+            ◀
+          </button>
         </div>
         <h1>{monthName}</h1>
         <div>
-          <button onClick={() => getNextMonth()}>▶</button>
+          <button style={styles.button} onClick={() => getNextMonth()}>
+            ▶
+          </button>
         </div>
       </header>
     );
