@@ -4,16 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-## `yarn`
+#### `yarn`
 
 and
 
-## `yarn start`
+#### `yarn start`
 
 to start the local server:
 
 ```
- `http://localhost:3000/`
+ http://localhost:3000/
 ```
 
 Here's what my final UI looked like:
